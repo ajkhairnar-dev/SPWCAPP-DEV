@@ -15,4 +15,8 @@ const auth = require("./src/customer/route/auth.route")
 // customer
 app.use(auth)
 
+app.get('*', function(req, res){
+    res.send('what???', 404);
+});
+
 app.listen(port, () => console.log(`server run on Port :${port}!`))
