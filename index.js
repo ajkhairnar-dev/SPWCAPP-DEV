@@ -16,7 +16,7 @@ const auth = require("./src/customer/route/auth.route")
 app.use(auth)
 
 app.get('*', function(req, res){
-    res.send('what???', 404);
+    return res.status(400).send({ success:false,message:"Mobile no. not exist in system.", error_code:ecode.auth.SYSC0101, data:{} })
 });
 
 app.listen(port, () => console.log(`server run on Port :${port}!`))
