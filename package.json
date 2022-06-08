@@ -1,0 +1,36 @@
+{
+  "name": "spw-api",
+  "version": "1.0.0",
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://ajkhairnar-dev@gitlab.com/ajkhairnar-dev/spw-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "10.x"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/ajkhairnar-dev/spw-api/issues"
+  },
+  "homepage": "https://gitlab.com/ajkhairnar-dev/spw-api#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.3",
+    "moment-timezone": "^0.5.34",
+    "nodemon": "^2.0.16",
+    "pg": "^8.7.3",
+    "underscore": "^1.13.3"
+  }
+}

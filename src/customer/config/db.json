@@ -1,0 +1,8 @@
+{
+  "host": "ec2-23-20-224-166.compute-1.amazonaws.com",
+  "user": "bbepcewglrhchn",
+  "password": "a09fd915f7d38dfde7b6e1ddffab71e11f88d178d5e68b1c8920812184a1d5ab",
+  "database": "d2dfesftc6rt9s",
+  "port": 5432
+}
+

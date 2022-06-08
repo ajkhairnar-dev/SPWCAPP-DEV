@@ -1,0 +1,44 @@
+{
+    "auth":{
+        "SYSC0101": {
+            "code": "SYSC.01.01",
+            "desc": "Mobile no. not exist in system."
+        },
+        "SYSC0102" :{
+            "code": "SYSC.01.02",
+            "desc": "You are block. Please contact to scrapwale."
+        },
+        "SYSC0103" :{
+            "code": "SYSC.01.03",
+            "desc": "Enter valid mobile or password."
+        },
+        "SYSC0104" :{
+            "code": "SYSC.01.04",
+            "desc": "Mobile number already registered."
+        },
+        "SYSC0105":{
+            "code":"SYSC.01.05",
+            "desc": "Error occurs in otp verification."
+        },
+        "SYSC0106":{
+            "code":"SYSC.01.06",
+            "desc": "Session is expired.Resend OTP."
+        },
+        "SYSC0107":{
+            "code":"SYSC.01.07",
+            "desc": "Enter valid OTP."
+        },
+        "SYSC0108":{
+            "code":"SYSC.01.08",
+            "desc": "Error occurs in otp verification."
+        },
+        "SYSC0109":{
+            "code":"SYSC.01.01",
+            "desc":"Error occurs in setpassword."
+        },
+        "SYSC0110":{
+            "code":"SYSC.01.10",
+            "desc":"Something went wrong."
+        }
+    }
+}
