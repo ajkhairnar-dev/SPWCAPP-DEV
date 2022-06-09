@@ -11,9 +11,11 @@ app.use(cors())
 app.use(express.json());
 
 const auth = require("./src/customer/route/auth.route")
+const profile = require('./src/customer/route/profile.route')
 
 // customer
 app.use(auth)
+app.use(profile)
 
 app.get('*', function(req, res){
     return res.status(400).send("Authentication failed.")

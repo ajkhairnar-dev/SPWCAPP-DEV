@@ -1,6 +1,7 @@
 {
     "jwt":{
-        "key":"Alpha1not2$$"
+        "key":"Alpha1not2$$",
+        "sessiontime":"4h"
     },
     "otp":{
         

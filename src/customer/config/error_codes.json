@@ -1,4 +1,12 @@
 {
+    "SYSC0001" :{
+        "code": "SYSC.00.01",
+        "desc": "Token authentication error."
+    },
+    "SYSC0002" :{
+        "code": "SYSC.00.02",
+        "desc": "Session has Expired or Auth Error."
+    },
     "auth":{
         "SYSC0101": {
             "code": "SYSC.01.01",
@@ -40,5 +48,6 @@
             "code":"SYSC.01.10",
             "desc":"Something went wrong."
         }
+        
     }
 }
