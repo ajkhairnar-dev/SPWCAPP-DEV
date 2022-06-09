@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "30eeaa83-4847-4f07-a10f-d4b5f3efcb37",
+		"name": "spw",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10988775"
+	},
+	"item": [
+		{
+			"name": "capp-api",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mobileno\":\"9881749780\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://spwcapp-dev.herokuapp.com/customer/login",
+									"protocol": "https",
+									"host": [
+										"spwcapp-dev",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"customer",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mobileno\":\"9696965652\",\r\n    \"password\":\"12345645\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://spwcapp-dev.herokuapp.com/customer/login2",
+									"protocol": "https",
+									"host": [
+										"spwcapp-dev",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"customer",
+										"login2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "registration",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mobileno\":\"9696965652\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://spwcapp-dev.herokuapp.com/customer/registration",
+									"protocol": "https",
+									"host": [
+										"spwcapp-dev",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"customer",
+										"registration"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "mobileotpverify",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mobileno\":\"9696965652\",\r\n    \"otp\":\"3435\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://spwcapp-dev.herokuapp.com/customer/mobileotpverify",
+									"protocol": "https",
+									"host": [
+										"spwcapp-dev",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"customer",
+										"mobileotpverify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "setpassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mobileno\":\"9696965652\",\r\n    \"password\":\"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://spwcapp-dev.herokuapp.com/customer/setpassword",
+									"protocol": "https",
+									"host": [
+										"spwcapp-dev",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"customer",
+										"setpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "forgotpassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mobileno\":\"7028156545\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://spwcapp-dev.herokuapp.com/customer/forgotpassword",
+									"protocol": "https",
+									"host": [
+										"spwcapp-dev",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"customer",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "forgototpverify",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mobileno\":\"7028156545\",\r\n    \"otp\":\"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://spwcapp-dev.herokuapp.com/customer/forgototpverify",
+									"protocol": "https",
+									"host": [
+										"spwcapp-dev",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"customer",
+										"forgototpverify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "forgotsetpassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mobileno\":\"7028156545\",\r\n    \"password\":\"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://spwcapp-dev.herokuapp.com/customer/forgotsetpassword",
+									"protocol": "https",
+									"host": [
+										"spwcapp-dev",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"customer",
+										"forgotsetpassword"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
