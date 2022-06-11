@@ -5,7 +5,7 @@ const {datetimediff} = require('../../common/datatimediff')
 const forgotpassword = async(req,res) => {
     const { mobileno } = req.body;
     try{
-        const {rows} = await conn.query("select * from mst_customers where mobileno=$1 and isverified=1",[mobileno]);
+        const {rows} = await conn.query("select * from mst_customers where mobileno=$1 and isverified=$2",[mobileno,1]);
         if(_.isEmpty(rows)){
             return res.status(400).send({ success:false,message:"Mobile no. not exist in system.", error_code:ecode.auth.SYSC0101, data:{} })
         }else{
@@ -21,7 +21,7 @@ const forgotpassword = async(req,res) => {
 const forgototpVerify= async(req,res)=>{
     const { mobileno,otp } = req.body;
     try{
-        const {rows} = await conn.query("select mobileno,otp,otpdate from mst_customers where mobileno=$1 and isverified=1",[mobileno]);
+        const {rows} = await conn.query("select mobileno,otp,otpdate from mst_customers where mobileno=$1 and isverified=$2",[mobileno,1]);
         
         if(_.isEmpty(rows)){
             return res.status(400).send({ success:false,message:"Error occurs in otp verification.",error_code:ecode.auth.SYSC0108, data:{} })
@@ -50,7 +50,7 @@ const forgototpVerify= async(req,res)=>{
 const forgotsetPassword = async(req,res)=>{
     try{
         const{mobileno,password} = req.body;
-        const {rows} = await conn.query("select customer_id,mobileno,otpdate from mst_customers where mobileno=$1 and isverified=1",[mobileno]);
+        const {rows} = await conn.query("select customer_id,mobileno,otpdate from mst_customers where mobileno=$1 and isverified=$2",[mobileno,1]);
         if(_.isEmpty(rows)){
             return res.status(400).send({ success:false,message:"Error occurs in setpassword.",error_code:ecode.auth.SYSC0109, data:{} })
         }else{

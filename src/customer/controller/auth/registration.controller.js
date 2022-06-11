@@ -6,7 +6,7 @@ const {datetimediff} = require('../../common/datatimediff')
 const registration = async(req,res) => {
     const { mobileno } = req.body;
     try{
-        const {rows} = await conn.query("select * from mst_customers where mobileno=$1 and isverified=1",[mobileno]);
+        const {rows} = await conn.query("select * from mst_customers where mobileno=$1 and isverified=$2",[mobileno,1]);
         
         if(_.isEmpty(rows)){
             const {rows} = await conn.query("select * from mst_customers where mobileno=$1",[mobileno]);
@@ -31,7 +31,7 @@ const registration = async(req,res) => {
 const otpVerify= async(req,res)=>{
     const { mobileno,otp } = req.body;
     try{
-        const {rows} = await conn.query("select mobileno,otp,otpdate from mst_customers where mobileno=$1 and isverified=0",[mobileno]);
+        const {rows} = await conn.query("select mobileno,otp,otpdate from mst_customers where mobileno=$1 and isverified=$2",[mobileno,0]);
         if(_.isEmpty(rows)){
             return res.status(400).send({ success:false,message:"Error occurs in otp verification.",error_code:ecode.auth.SYSC0108, data:{} })
         }else{
@@ -59,7 +59,7 @@ const otpVerify= async(req,res)=>{
 const setPassword = async(req,res)=>{
     try{
         const{mobileno,password} = req.body;
-        const {rows} = await conn.query("select customer_id,mobileno,otpdate from mst_customers where mobileno=$1 and isverified=0",[mobileno]);
+        const {rows} = await conn.query("select customer_id,mobileno,otpdate from mst_customers where mobileno=$1 and isverified=$2",[mobileno,0]);
         if(_.isEmpty(rows)){
             return res.status(400).send({ success:false,message:"Error occurs in setpassword.",error_code:ecode.auth.SYSC0109, data:{} })
         }else{
@@ -73,7 +73,7 @@ const setPassword = async(req,res)=>{
         }
 
         const hashPassword = await bcrypt.hash(password,10);
-        await conn.query("update mst_customers set password=$1, isverified=1 where customer_id = $2",[hashPassword,rows[0].customer_id]);
+        await conn.query("update mst_customers set password=$1, isverified=$2 where customer_id = $3",[hashPassword,1,rows[0].customer_id]);
         return res.status(200).send({ success:true,message:"Password has been set. Please login.",data:{} })
         }
     }catch(error){

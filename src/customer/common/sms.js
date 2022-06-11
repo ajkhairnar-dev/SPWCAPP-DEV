@@ -1,0 +1,4 @@
+
+const sentOTP = (otp,type,) =>{
+
+}

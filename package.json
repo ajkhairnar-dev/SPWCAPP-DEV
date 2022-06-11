@@ -21,6 +21,7 @@
   },
   "homepage": "https://gitlab.com/ajkhairnar-dev/spw-api#readme",
   "dependencies": {
+    "@walkover/msg91": "^0.1.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",

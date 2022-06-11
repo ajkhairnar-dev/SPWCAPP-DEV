@@ -3,7 +3,10 @@
         "key":"Alpha1not2$$",
         "sessiontime":"1h"
     },
-    "otp":{
-        
+    "sms":{
+        "authkey":"348875AVUlnLVXZoq6128c7e0P1",
+        "senderid":"ASCRAP",
+        "country":"91",
+        "route":"default"
     }
 }

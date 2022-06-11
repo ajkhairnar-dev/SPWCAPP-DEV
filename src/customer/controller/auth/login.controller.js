@@ -26,7 +26,7 @@ const loginTwo = async (req,res) => {
     const { mobileno,password } = req.body;
   
     try{
-        const {rows } = await conn.query("select customer_id,firstname,lastname,emailid,mobileno,password from mst_customers where mobileno=$1 and isverified=1",[mobileno]);
+        const {rows } = await conn.query("select customer_id,firstname,lastname,emailid,mobileno,password from mst_customers where mobileno=$1 and isverified=$2",[mobileno,1]);
         if(_.isEmpty(rows)){
             return res.status(400).send({ success:false,message:"Enter valid mobile or password.",error_code:ecode.auth.SYSC0103, data:{} })
         }
@@ -46,6 +46,7 @@ const loginTwo = async (req,res) => {
         const token = await generateAccessToken(data);
         res.status(200).send({ success:true,message:"Login successfully.", data:{customer:data,token:token} })
     }catch (error) {
+        console.log(error)
         return res.status(400).send({ success:false,message:"Something wents wrong.", error_code:ecode.auth.SYSC0110, data:{ error:error } })
     }
 }
