@@ -13,7 +13,7 @@ const registration = async(req,res) => {
             if(_.isEmpty(rows)){
                 //otp generate method
                 const otp = 3435;
-                await conn.query("insert into mst_customers(mobileno,otp,otpdate,registrationby) values($1,$2,$3,$4)",[mobileno,otp,moment().format("YYYY-MM-DD hh:mm:ss"),'App']);
+                await conn.query("insert into mst_customers(mobileno,otp,otpdate,role_id,registrationby) values($1,$2,$3,$4,$5)",[mobileno,otp,moment().format("YYYY-MM-DD hh:mm:ss"),2,'App']);
             }else{
                 //otp generate method
                 const otp = 1111;
