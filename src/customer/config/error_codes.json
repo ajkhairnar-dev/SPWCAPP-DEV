@@ -49,5 +49,11 @@
             "desc":"Something went wrong."
         }
         
+    },
+    "profile" :{
+        "SYSC0201" :{
+            "code": "SYSC.02.01",
+            "desc": "Something wents wrong."
+        }
     }
 }

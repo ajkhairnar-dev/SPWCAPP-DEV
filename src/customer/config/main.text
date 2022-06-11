@@ -29,3 +29,22 @@ const client = new Client({
   "port": 5432
   
 }
+
+
+const Joi = require('@hapi/joi');
+
+const joiSchema = Joi.object({
+  a: Joi.string()
+    .min(2)
+    .max(10)
+    .required()
+    .messages({
+      'string.base': `"a" should be a type of 'text'`,
+      'string.empty': `"a" cannot be an empty field`,
+      'string.min': `"a" should have a minimum length of {#limit}`,
+      'any.required': `"a" is a required field`
+    })
+});
+
+const validationResult = joiSchema.validate({ a: 2 }, { abortEarly: false });
+console.log(validationResult.error); // expecting ValidationError: "a" should be a type of 'text'
