@@ -7,6 +7,29 @@
         "authkey":"348875AVUlnLVXZoq6128c7e0P1",
         "senderid":"ASCRAP",
         "country":"91",
-        "route":"default"
+        "route":"default",
+        "dlt" :[
+            {
+                "id":0,
+                "dlt":"1307162921252930969",
+                "message":"Your OTP for ANI SCRAP PRIVATE LIMITED Scrapwale is _otp_. Please do not share with anyone"
+            },
+            {
+                "id":1,
+                "dlt":"1307162616591594752",
+                "message":"Welcome to Scrapwale, Your Request No._requestno_ has been submitted successfully"
+            },
+            {
+                "id":2,
+                "dlt":"1307162921259846049",
+                "message":"Your Request No. _requestno_ is Assigned to #assignto#, Contact _contact_, Your Wallet Amount is: Rs. _amount_, Thank You for Using Scrapwale, ANI SCRAP PRIVATE LIMITED"
+            },
+            {
+                "id":3,
+                "dlt":"1307162616596168653",
+                "message":"Pickup Request _requestno_ has been completed successfully. Total amount paid:Rs. _amount_. Thank you for using Scrapwale"
+            }
+        ]
     }
 }
+

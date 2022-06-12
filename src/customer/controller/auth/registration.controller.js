@@ -1,29 +1,28 @@
 const bcrypt = require('bcryptjs');
 const moment = require('moment');
 const {datetimediff} = require('../../common/datatimediff')
-
+const {sentOTP } = require('../../common/sms')
 
 const registration = async(req,res) => {
     const { mobileno } = req.body;
     try{
         const {rows} = await conn.query("select * from mst_customers where mobileno=$1 and isverified=$2",[mobileno,1]);
-        
+        const otp = Math.floor(1000 + Math.random() * 9000);
         if(_.isEmpty(rows)){
             const {rows} = await conn.query("select * from mst_customers where mobileno=$1",[mobileno]);
             if(_.isEmpty(rows)){
-                //otp generate method
-                const otp = 3435;
-                await conn.query("insert into mst_customers(mobileno,otp,otpdate,role_id,registrationby) values($1,$2,$3,$4,$5)",[mobileno,otp,moment().format("YYYY-MM-DD hh:mm:ss"),2,'App']);
+                const {rows} =await conn.query("insert into mst_customers(mobileno,otp,otpdate,role_id,registrationby) values($1,$2,$3,$4,$5) RETURNING *",[mobileno,otp,moment().format("YYYY-MM-DD hh:mm:ss"),2,'App']);
+                sentOTP(0,{"_otp_":otp,customer_id:rows[0].customer_id,mobileno:mobileno})
             }else{
-                //otp generate method
-                const otp = 1111;
-                await conn.query("update mst_customers set otp=$1,otpdate=$2 where mobileno = $3",[otp,moment().format("YYYY-MM-DD hh:mm:ss"),mobileno]);
+                const {rows} = await conn.query("update mst_customers set otp=$1,otpdate=$2 where mobileno = $3 RETURNING *",[otp,moment().format("YYYY-MM-DD hh:mm:ss"),mobileno]);
+                sentOTP(0,{"_otp_":otp,customer_id:rows[0].customer_id,mobileno:mobileno})
             }
             return res.status(200).send({ success:true,message:"OTP sent to your mobile number.", data:{ mobileno:mobileno } })
         }else{
             return res.status(400).send({ success:false,message:"Mobile number already registered.",error_code:ecode.auth.SYSC0104, data:{} })
         }
-    }catch (error) {
+    }catch(error) {
+        console.log(error)
         return res.status(400).send({ success:false,message:"Something wents wrong.", error_code:ecode.auth.SYSC0110, data:{ error:error } }) 
     }
 }
