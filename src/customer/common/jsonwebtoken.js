@@ -25,6 +25,7 @@ const verifyAccessToken = async(req,res,next) => {
     }
 }
 
+
 module.exports = {
     generateAccessToken,
     verifyAccessToken

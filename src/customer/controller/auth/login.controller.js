@@ -6,7 +6,7 @@ const loginOne = async(req,res) => {
     try{
         const {rows} = await conn.query("select customer_id,firstname,lastname,emailid,mobileno from mst_customers where mobileno=$1",[mobileno]);
         if(_.isEmpty(rows)){
-            return res.status(400).send({ success:false,message:"Mobile no. not exist in system.",error_code:ecode.auth.SYSC0101, data:{} })
+            return res.status(400).send({ success:false,message:ecode.auth.SYSC0101.msg,error_code:ecode.auth.SYSC0101, data:{} })
         }
 
         //check isblock
@@ -18,7 +18,7 @@ const loginOne = async(req,res) => {
         res.status(200).send({ success:true,message:"Login successfully.", data:{customer:rows[0],token:token} })
 
     }catch (error) {
-        return res.status(400).send({ success:false,message:"Something wents wrong.", error_code:ecode.auth.SYSC0110, data:{ error:error } })
+        return res.status(400).send({ success:false,message:ecode.auth.SYSC0110.msg, error_code:ecode.auth.SYSC0110, data:{ error:error } })
     }
 }
 
@@ -28,12 +28,12 @@ const loginTwo = async (req,res) => {
     try{
         const {rows } = await conn.query("select customer_id,firstname,lastname,emailid,mobileno,password from mst_customers where mobileno=$1 and isverified=$2",[mobileno,1]);
         if(_.isEmpty(rows)){
-            return res.status(400).send({ success:false,message:"Enter valid mobile or password.",error_code:ecode.auth.SYSC0103, data:{} })
+            return res.status(400).send({ success:false,message:ecode.auth.SYSC0103.msg,error_code:ecode.auth.SYSC0103, data:{} })
         }
 
         const bpass = await bcrypt.compare(password,rows[0].password);
         if(!bpass){ 
-            return res.status(400).send({ success:false,message:"Enter valid mobile or password.",error_code:ecode.auth.SYSC0103, data:{} })
+            return res.status(400).send({ success:false,message:ecode.auth.SYSC0103.msg,error_code:ecode.auth.SYSC0103, data:{} })
         }
 
         //check isblock
@@ -47,13 +47,13 @@ const loginTwo = async (req,res) => {
         res.status(200).send({ success:true,message:"Login successfully.", data:{customer:data,token:token} })
     }catch (error) {
         console.log(error)
-        return res.status(400).send({ success:false,message:"Something wents wrong.", error_code:ecode.auth.SYSC0110, data:{ error:error } })
+        return res.status(400).send({ success:false,message:ecode.auth.SYSC0110.msg, error_code:ecode.auth.SYSC0110, data:{ error:error } })
     }
 }
 
 const checkBlock = (rows) => {
     if(rows[0].isblock == 1){
-        return { success:false,message:"You are block. Please contact to scrapwale",error_code:ecode.auth.SYSC0102, data:{} }
+        return { success:false,message:ecode.auth.SYSC0102.msg,error_code:ecode.auth.SYSC0102, data:{} }
     }
 }
 

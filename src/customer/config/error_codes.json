@@ -1,4 +1,8 @@
 {
+    "SYSC0000":{
+        "code": "SYSC.00.00",
+        "msg": "Authentication error."
+    },
     "SYSC0001" :{
         "code": "SYSC.00.01",
         "msg": "Token authentication error."

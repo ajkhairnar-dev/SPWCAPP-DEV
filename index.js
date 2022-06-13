@@ -9,11 +9,13 @@ global.ecode = require('./src/customer/config/error_codes.json')
 global.basepath='/customer'
 app.use(cors())
 app.use(express.json());
+const { verifyApiKey} = require('./src/customer/common/verifyapikey')
 
 const auth = require("./src/customer/route/auth.route")
 const profile = require('./src/customer/route/profile.route')
 
 // customer
+app.use(verifyApiKey)
 app.use(auth)
 app.use(profile)
 
