@@ -10,7 +10,6 @@ const {forgotpassword,forgototpVerify,forgotsetPassword} = require('../controlle
 const {forgotpassValidation,forgototpValidation,forgotsetpassValidation } = require('../schema/auth/forgotpassword.validation');
 
 
-
 //router.method('path',middleware,method)
 //-------- login -----------
 auth.post(basepath+'/login',loginOneValidation, loginOne)  //login with mobile
