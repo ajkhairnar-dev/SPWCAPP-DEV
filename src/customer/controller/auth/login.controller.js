@@ -54,12 +54,12 @@ const loginTwo = async (req,res) => {
 }
 
 const checkBlock = (rows) => {
-    if(rows[0].isblock == 1){ //isblock
-        return { success:false,message:ecode.SYSC0102.msg,errorCode:ecode.SYSC0102.code, data:{} }
+    if(rows[0].isverified == 0){ //isverify
+        return { success:false,message:ecode.SYSC0111.msg,errorCode:ecode.SYSC0111.code, data:{} }
     }else if(rows[0].isactive == 0){ //isactive
         return { success:false,message:ecode.SYSC0112.msg,errorCode:ecode.SYSC0112.code, data:{} }
-    }else if(rows[0].isverified == 0){ //isverify
-        return { success:false,message:ecode.SYSC0111.msg,errorCode:ecode.SYSC0111.code, data:{} }
+    }else if(rows[0].isblock == 1){ //isblock
+        return { success:false,message:ecode.SYSC0102.msg,errorCode:ecode.SYSC0102.code, data:{} }
     }
 }
 

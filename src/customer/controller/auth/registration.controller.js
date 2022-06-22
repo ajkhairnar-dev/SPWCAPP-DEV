@@ -12,7 +12,7 @@ const registration = async(req,res) => {
         if(_.isEmpty(rows)){
             const {rows} = await conn.query("select * from mst_customers where mobileno=$1",[mobileno]);
             if(_.isEmpty(rows)){
-                const {rows} =await conn.query("insert into mst_customers(mobileno,otp,otpdate,role_id,registrationby,isactive,isblock,isverified,createdate) values($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *",[mobileno,otp,moment().format("YYYY-MM-DD hh:mm:ss"),2,'App',0,1,0,moment().format("YYYY-MM-DD hh:mm:ss")]);
+                const {rows} =await conn.query("insert into mst_customers(mobileno,otp,otpdate,role_id,registrationby,isactive,isblock,isverified,createdate) values($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *",[mobileno,otp,moment().format("YYYY-MM-DD hh:mm:ss"),4,'App',0,1,0,moment().format("YYYY-MM-DD hh:mm:ss")]);
                 sentOTP(0,{"_otp_":otp,customer_id:rows[0].customer_id,mobileno:mobileno,role_id:2,otptype:1})
             }else{
                 const {rows} = await conn.query("update mst_customers set otp=$1,otpdate=$2 where mobileno = $3 RETURNING *",[otp,moment().format("YYYY-MM-DD hh:mm:ss"),mobileno]);
@@ -23,7 +23,6 @@ const registration = async(req,res) => {
             return res.status(400).send({ success:false,message:ecode.SYSC0104.msg,errorCode:ecode.SYSC0104.code, data:{} })
         }
     }catch(error) {
-        console.log(error)
         return res.status(400).send({ success:false,message:ecode.SYSC0110.msg, errorCode:ecode.SYSC0110.code, data:{ error:error } }) 
     }
 }
