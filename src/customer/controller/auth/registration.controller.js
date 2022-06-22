@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const moment = require('moment');
 const {datetimediff} = require('../../common/datatimediff')
 const {sentOTP } = require('../../common/sms')
+const ecode = require("./error_code.json");
 
 const registration = async(req,res) => {
     const { mobileno } = req.body;
@@ -19,20 +20,21 @@ const registration = async(req,res) => {
             }
             return res.status(200).send({ success:true,message:"OTP sent to your mobile number.", data:{ mobileno:mobileno } })
         }else{
-            return res.status(400).send({ success:false,message:ecode.auth.SYSC0104.msg,error_code:ecode.auth.SYSC0104, data:{} })
+            return res.status(400).send({ success:false,message:ecode.SYSC0104.msg,errorCode:ecode.SYSC0104.code, data:{} })
         }
     }catch(error) {
        
-        return res.status(400).send({ success:false,message:ecode.auth.SYSC0110.msg, error_code:ecode.auth.SYSC0110, data:{ error:error } }) 
+        return res.status(400).send({ success:false,message:ecode.SYSC0110.msg, errorCode:ecode.SYSC0110.code, data:{ error:error } }) 
     }
 }
 
 const otpVerify= async(req,res)=>{
+
     const { mobileno,otp } = req.body;
     try{
         const {rows} = await conn.query("select mobileno,otp,otpdate from mst_customers where mobileno=$1 and isverified=$2",[mobileno,0]);
         if(_.isEmpty(rows)){
-            return res.status(400).send({ success:false,message:ecode.auth.SYSC0108.msg,error_code:ecode.auth.SYSC0108, data:{} })
+            return res.status(400).send({ success:false,message:ecode.SYSC0108.msg,errorCode:ecode.SYSC0108.code, data:{} })
         }else{
 
             let otptime = moment(rows[0].otpdate).format("YYYY-MM-DD hh:mm:ss");
@@ -40,19 +42,19 @@ const otpVerify= async(req,res)=>{
             const diff = await datetimediff(currenttime,otptime)
            
             if(diff.days > 0 || diff.hours > 0 || diff.minutes > 2){
-                return res.status(400).send({ success:false,message:ecode.auth.SYSC0106.msg,error_code:ecode.auth.SYSC0106, data:{} })
+                return res.status(400).send({ success:false,message:ecode.SYSC0106.msg,errorCode:ecode.SYSC0106.code, data:{} })
             }
            
             if(rows[0].otp == otp){
                 const data = _.omit(rows[0],'otp','otpdate');
                 return res.status(200).send({ success:true,message:"OTP verification successfully.",data:data })
             }else{
-                return res.status(400).send({ success:false,message:ecode.auth.SYSC0107.msg,error_code:ecode.auth.SYSC0107, data:{} })
+                return res.status(400).send({ success:false,message:ecode.SYSC0107.msg,errorCode:ecode.SYSC0107.code, data:{} })
             }
         }
     }catch(error){
         console.log(error)
-        return res.status(400).send({ success:false,message:ecode.auth.SYSC0110.msg, error_code:ecode.auth.SYSC0110, data:{ error:error } })
+        return res.status(400).send({ success:false,message:ecode.SYSC0110.msg, errorCode:ecode.SYSC0110.code, data:{ error:error } })
     }
 }
 
@@ -61,7 +63,7 @@ const setPassword = async(req,res)=>{
         const{mobileno,password} = req.body;
         const {rows} = await conn.query("select customer_id,mobileno,otpdate from mst_customers where mobileno=$1 and isverified=$2",[mobileno,0]);
         if(_.isEmpty(rows)){
-            return res.status(400).send({ success:false,message:ecode.auth.SYSC0109.msg,error_code:ecode.auth.SYSC0109, data:{} })
+            return res.status(400).send({ success:false,message:ecode.SYSC0109.msg,errorCode:ecode.SYSC0109.code, data:{} })
         }else{
             
         let otptime = moment(rows[0].otpdate).format("YYYY-MM-DD hh:mm:ss");
@@ -69,7 +71,7 @@ const setPassword = async(req,res)=>{
         const diff = await datetimediff(currenttime,otptime)
         
         if(diff.days > 0 || diff.hours > 0 || diff.minutes > 2){
-            return res.status(400).send({ success:false,message:ecode.auth.SYSC0106.msg,error_code:ecode.auth.SYSC0106, data:{} })
+            return res.status(400).send({ success:false,message:ecode.SYSC0106.msg,errorCode:ecode.SYSC0106.code, data:{} })
         }
 
         const hashPassword = await bcrypt.hash(password,10);
@@ -77,7 +79,7 @@ const setPassword = async(req,res)=>{
         return res.status(200).send({ success:true,message:"Password has been set. Please login.",data:{} })
         }
     }catch(error){
-        return res.status(400).send({ success:false,message:ecode.auth.SYSC0110.msg, error_code:ecode.auth.SYSC0110, data:{ error:error } })
+        return res.status(400).send({ success:false,message:ecode.SYSC0110.msg, errorCode:ecode.SYSC0110.code, data:{ error:error } })
     }
 }
 
