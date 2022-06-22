@@ -28,7 +28,7 @@ const loginTwo = async (req,res) => {
     const { mobileno,password } = req.body;
   
     try{
-        const {rows } = await conn.query("select customer_id,firstname,lastname,emailid,mobileno,password from mst_customers where mobileno=$1 and isverified=$2",[mobileno,1]);
+        const {rows } = await conn.query("select customer_id,firstname,lastname,emailid,mobileno,password,isactive,isblock,isverified from mst_customers where mobileno=$1",[mobileno]);
         if(_.isEmpty(rows)){
             return res.status(400).send({ success:false,message:ecode.SYSC0103.msg,errorCode:ecode.SYSC0103.code, data:{} })
         }
@@ -39,7 +39,7 @@ const loginTwo = async (req,res) => {
         }
 
         //check isblock
-        const isBlock= checkBlock(rows);
+        const isBlock= await checkBlock(rows);
         if(isBlock){ return res.status(400).send(isBlock) }
 
         const data = _.omit(rows[0],'password');
@@ -54,8 +54,12 @@ const loginTwo = async (req,res) => {
 }
 
 const checkBlock = (rows) => {
-    if(rows[0].isblock == 1){
+    if(rows[0].isblock == 1){ //isblock
         return { success:false,message:ecode.SYSC0102.msg,errorCode:ecode.SYSC0102.code, data:{} }
+    }else if(rows[0].isactive == 0){ //isactive
+        return { success:false,message:ecode.SYSC0112.msg,errorCode:ecode.SYSC0112.code, data:{} }
+    }else if(rows[0].isverified == 0){ //isverify
+        return { success:false,message:ecode.SYSC0111.msg,errorCode:ecode.SYSC0111.code, data:{} }
     }
 }
 

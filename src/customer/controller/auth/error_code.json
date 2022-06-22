@@ -35,12 +35,21 @@
         "msg": "Error occurs in otp verification."
     },
     "SYSC0109":{
-        "code":"SYSC.01.01",
+        "code":"SYSC.01.09",
         "msg":"Error occurs in setpassword."
     },
     "SYSC0110":{
         "code":"SYSC.01.10",
         "msg":"Something went wrong."
+    },
+    "SYSC0111":{
+        "code": "SYSC.01.11",
+        "msg": "Please Verify your account."
+    },
+    "SYSC0112":{
+        "code": "SYSC.01.12",
+        "msg":  "Account has been inactive",
+        "desc": "Account has been inactive"
     }
     
 }

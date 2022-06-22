@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "30eeaa83-4847-4f07-a10f-d4b5f3efcb37",
+		"_postman_id": "85f38837-8585-478e-8917-abc56619d630",
 		"name": "spw",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "10988775"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -13,7 +12,13 @@
 					"name": "login",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "apikey",
+								"value": "8xas/sRrL3%UbT_A",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"mobileno\":\"9881749780\"\r\n}",
@@ -42,10 +47,16 @@
 					"name": "login1",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "apikey",
+								"value": "8xas/sRrL3%UbT_A",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mobileno\":\"9696969696\",\r\n    \"password\":\"1heric\"\r\n}",
+							"raw": "{\r\n    \"mobileno\":\"7028156545\",\r\n    \"password\":\"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -71,10 +82,16 @@
 					"name": "registration",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "apikey",
+								"value": "8xas/sRrL3%UbT_A",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mobileno\":\"9696969696\"\r\n}",
+							"raw": "{\r\n    \"mobileno\":\"7028156545\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -100,10 +117,16 @@
 					"name": "mobileotpverify",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "apikey",
+								"value": "8xas/sRrL3%UbT_A",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mobileno\":\"9696969696\",\r\n    \"otp\":\"3435\"\r\n}",
+							"raw": "{\r\n    \"mobileno\":\"7028156545\",\r\n    \"otp\":\"9984\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -129,10 +152,16 @@
 					"name": "setpassword",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "apikey",
+								"value": "8xas/sRrL3%UbT_A",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mobileno\":\"9696969696\",\r\n    \"password\":\"1heric\"\r\n}",
+							"raw": "{\r\n    \"mobileno\":\"7028156545\",\r\n    \"password\":\"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -158,7 +187,13 @@
 					"name": "forgotpassword",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "apikey",
+								"value": "8xas/sRrL3%UbT_A",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"mobileno\":\"7028156545\"\r\n}",
@@ -187,7 +222,22 @@
 					"name": "forgototpverify",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "apikey",
+								"value": "8xas/sRrL3%UbT_A",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mobileno\":\"7028156545\",\r\n    \"otp\":\"7776\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:3000/customer/forgototpverify",
 							"protocol": "http",
@@ -207,9 +257,33 @@
 					"name": "forgotsetpassword",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "apikey",
+								"value": "8xas/sRrL3%UbT_A",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mobileno\":\"7028156545\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:3000/customer/forgotsetpassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customer",
+								"forgotsetpassword"
+							]
 						}
 					},
 					"response": []
